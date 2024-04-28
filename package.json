@@ -12,6 +12,7 @@
     "child_process": "^1.0.2",
     "firebase": "^10.11.1",
     "next": "14.2.2",
+    "next-auth": "^4.24.7",
     "python-shell": "^5.0.0",
     "react": "^18",
     "react-dom": "^18",

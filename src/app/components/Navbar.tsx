@@ -1,7 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
 import menuImg from '../assets/menu.svg'
-export default function Navbar() {
+import { Providers } from './Providers'
+import { Appbar } from './Appbar'
+import { SignInButton } from './SignInButton'
+export default function Navbar({navData}) {
   return (
     <header className="bg-white shadow">
     <nav className="container mx-auto flex justify-end items-center p-5 2xl:mr-10">
@@ -13,7 +16,10 @@ export default function Navbar() {
         <li><a href="#" className=" text-gray-500 hover:text-black">How It Works</a></li>
         <li><a href="#" className=" text-gray-500 hover:text-black">Pricing</a></li>
         <li><a href="#" className=" text-gray-500 hover:text-black">Contact</a></li>
-        <li><a href="#" className=" text-gray-500 hover:text-black">Login</a></li>
+        <Providers>
+        <SignInButton/>
+        </Providers>
+        {/*<li><a href="#" className=" text-gray-500 hover:text-black">Login</a></li>*/}
       </ul>
     </nav>
   </header>  

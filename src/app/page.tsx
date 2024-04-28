@@ -1,12 +1,20 @@
+'use client'
 import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import React, {useEffect} from 'react'
 import FileUpload from "./components/FirebaseText";
 import Footer from './components/Footer'
 import uploadIcon from './assets/upload_file_svg.svg'
 import downloadIcon from './assets/download.svg'
 import AiLogo from './assets/ai-logo.svg'
+import { Providers } from "./components/Providers";
+import { Appbar } from "./components/Appbar";
+import { useSession } from "next-auth/react";
+import { SignInButton } from "./components/SignInButton";
 export default function Home() {
+
+
   return (
   <>
   <Navbar />
