@@ -3,7 +3,7 @@ import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import React, {useEffect} from 'react'
-import FileUpload from "./components/FirebaseText";
+import FileUpload from "./components/FirebaseFileUpload";
 import Footer from './components/Footer'
 import uploadIcon from './assets/upload_file_svg.svg'
 import downloadIcon from './assets/download.svg'

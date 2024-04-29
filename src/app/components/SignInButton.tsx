@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useRouter } from 'next/router';
-export const SignInButton = () => {
+export const SignInButton = ({uid}) => {
   const { data: session } = useSession();
   const [isUserSignedIn, updateUserAuthState] = useState(false);
   const [showAcList, acListVis] = useState(false)
@@ -25,8 +25,11 @@ export const SignInButton = () => {
   useEffect(() => {
     if (window != null && session && session.user) {
       updateUserAuthState(true);
+      uid(session.user.id)
      // window.location.href = "/dashboard"
     }
+
+
   }, [session]);
 
   function UserList(){
@@ -41,7 +44,7 @@ export const SignInButton = () => {
     <>
       {isUserSignedIn ? (
         <div className="cursor-pointer z-50">
-          <img onClick={() => {acListVis(!showAcList)}} src={session.user.image} width={25} height={25} className="rounded-xl" />
+          <img onClick={() => {acListVis(!showAcList)}} src={session.user.image} width={30} height={30} className="rounded-2xl" />
           {/*<button onClick={() => {signOut()}} className="text-red-600">
             Sign out
       </button>*/}
