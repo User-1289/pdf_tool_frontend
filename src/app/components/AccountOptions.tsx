@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import LogOutImg from '../assets/logout.png'
+
 function AccountOptions() {
   const [isLogoutConfirmationOpen, setIsLogoutConfirmationOpen] = useState(false);
 
