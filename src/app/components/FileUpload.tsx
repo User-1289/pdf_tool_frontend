@@ -7,11 +7,13 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { Extroptions } from "./Extroptions";
 const { v4: uuidv4 } = require("uuid");
 import Swal, { SweetAlertResult } from "sweetalert2";
+import DisplayExtracted from "./DisplayExtracted";
 
 interface userProps {
   uid: number;
 }
 const FileUpload: React.FC<userProps> = ({ uid }) => {
+
   const [progresspercent, setProgresspercent] = useState(0);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [imgUrl, setImgUrl] = useState(null);
@@ -21,6 +23,9 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
   const [extrStart, setExtrStatus] = useState("");
   const [presUrl, setPresUrl] = useState("");
   const [processState, setProcessState] = useState("");
+  const [extractedData, setExtractedData] = useState<any>()
+  let projectName = "";
+
   let startPage = 0;
   let endPage = 0;
 
@@ -92,6 +97,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL: string) => {
+          processCompleted()
           console.log(downloadURL);
           setImgUrl(downloadURL);
           setBarVis(false);
@@ -101,14 +107,14 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     );
   };
 
-  useEffect(() => {
-    if (presUrl.length > 0) {
-      setExtrStatus("completed");
-    }
-  }, [presUrl]);
+  //useEffect(() => {
+  //  if (presUrl.length > 0) {
+  //    setExtrStatus("completed");
+  //  }
+  //}, [presUrl]);
   const sendPdf = async (
     docUrl: string,
-    projectId: number,
+    projectId: string,
     docPath: string
   ) => {
     setExtrStatus("started");
@@ -126,14 +132,16 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.info.status == true) {
-          console.log("Extracted slides created successfully");
-          setPresUrl(data.info.url);
-          //presentationPreview(projectId);
-          processCompleted();
-          // setExtrStatus("completed")
-        }
         console.log(data);
+      //  return
+        if (data.info.status == true) {
+          setExtractedData(data.info.extracted_data)
+          //processCompleted();
+          setExtrStatus("completed")
+          //sessionStorage.setItem("extracted", JSON.stringify(data.info.extracted_data))
+          saveProjectName(projectId, projectName,data.info.extracted_data)
+          window.location.href = `/extracted-preview?projectId=${projectId}`
+        }
       });
   };
 
@@ -141,8 +149,13 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     window.location.replace(`/preview?projectId=${projectId}`);
   }
 
+  function saveProjectName(projectId:string, projectName:string, projectExtracted:any){
+    let getCurrProjects = JSON.parse(localStorage.getItem("projects")) || []
+    let nowProj = [...getCurrProjects, {projectId:projectId, projectName:projectName, projectExtracted:JSON.stringify(projectExtracted)}]
+    localStorage.setItem("projects", JSON.stringify(nowProj))
+  }
+
   async function processCompleted() {
-    let projectName = "";
     const result: SweetAlertResult = await Swal.fire({
       title: "Successfully extracted content",
       input: "text",
@@ -169,7 +182,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     //  }
     //})
 
-    // projectName = presentationName;
+     projectName = presentationName;
   }
   return (
     <>
@@ -247,6 +260,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
           </button>
         </div>
       </form>
+      { extrStart == "completed" && <DisplayExtracted getText={extractedData}/>}
     </>
   );
 };

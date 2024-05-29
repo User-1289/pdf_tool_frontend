@@ -12,7 +12,7 @@ export default async function HomeServer() {
   let images: Files | null = null;
 
   try {
-    const fileRef = ref(storage, 'https://firebasestorage.googleapis.com/v0/b/pdf-tool-dde90.appspot.com/o/107077698826747331387%2F723d0d45-eeb5-4ac5-ab74-ad948aa8c545%2Fimages.zip?alt=media&token=a7985079-f3b1-453b-946f-e2fb72a66b54');
+    const fileRef = ref(storage, 'gs://pdf-tool-dde90.appspot.com/115887270922889725754/5a3819aa-8f02-4d08-b84c-4bbb0c57f9ee/images.zip');
     const downloadURL = await getDownloadURL(fileRef);
     const response = await fetch(downloadURL);
 

@@ -4,12 +4,15 @@ import { Providers } from '../components/Providers';
 import { SignInButton } from '../components/SignInButton';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import FileUpload from '../components/FileUpload';
+
 export default function Page() {
   const [userId, setUserId] = useState()
 
   useEffect(()=>{
     console.log(userId)
   }, [userId])
+
+
   return (
     <div>
       <header className="bg-white shadow">
