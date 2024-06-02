@@ -4,15 +4,14 @@ import { Providers } from '../components/Providers';
 import { SignInButton } from '../components/SignInButton';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import FileUpload from '../components/FileUpload';
-
+import DisplayProjects from '../components/DisplayProjects';
 export default function Page() {
   const [userId, setUserId] = useState()
-
+  const [existingProjects, setExistingProjects] = useState([])
   useEffect(()=>{
-    console.log(userId)
-  }, [userId])
-
-
+    let getProjects = JSON.parse(localStorage.getItem("projects"))
+    setExistingProjects(getProjects)
+  }, [])
   return (
     <div>
       <header className="bg-white shadow">
@@ -24,6 +23,7 @@ export default function Page() {
         </nav>
       </header>  
       <FileUpload uid={userId}/>
+      <DisplayProjects allProjects={existingProjects}/>
     </div>
   );
 }

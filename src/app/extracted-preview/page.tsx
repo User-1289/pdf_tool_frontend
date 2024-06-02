@@ -61,8 +61,8 @@ const DisplayExtracted: React.FC<DisplayExtractedProps> = ({  }) => {
     console.log(getAllData)
     console.log(getAllData[getSpecificProjIndex])
     let getJsonString = JSON.parse(getAllData[getSpecificProjIndex].projectExtracted)
-    //console.log(getJsonString)
-    let getExtractedText = [...getJsonString.chapters]
+    console.log(getJsonString)
+    let getExtractedText = [...getJsonString[0].chapters]
     setExtractedText(getExtractedText)
     console.log(extractedText)
   }, [])

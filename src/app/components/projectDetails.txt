@@ -1,0 +1,30 @@
+Project Name: hey
+
+Chapter: Geometry
+  Category: Quadrilaterals
+    Question: P, Q, R and S are the midpoints of the sides of the quadrilateral ABCD. AC = 14 centimetres and BD = 18 centimetres. a) Find the lengths of the sides of the quadrilateral PQRS. b) Among the following, what type of a quadrilateral is PQRS? (Rectangle, Square, Parallelogram, Rhombus)
+
+  Category: Circles
+    Question: AB and CD are two equal and parallel chords of a circle of diameter 16 centimetres. Diameter LM is parallel to both AB and CD. The area of triangle LPM is 48 square centimetres. a) What is the area of triangle LQM? b) Find the distance between the chords AB and CD.
+    Question: Draw an equilateral triangle of side 5 centimetres and its circumcircle. Draw a triangle of perimeter 13 centimetres and sides are in the ratio 2:3:4.
+
+  Category: Prisms and Cylinders
+    Question: 6 square pieces of side 10 centimetres are Cut out and joined as shown in the figure. It is then folded to make a prism. a) Find the surface area of the prism. b) How many litres of water can it hold?
+    Question: Calculate the volume of a cylinder of base radius 4 centimetres and height 10 centimetres. Consider another cylinder of half the base radius and double the height of the first. What part of the volume of the first is that of the second?
+
+Chapter: Number System
+  Category: Arithmetic Mean and Absolute Value
+    Question: a) Write 5 different numbers with arithmetic mean 30. b) Write 6 different numbers with arithmetic mean 30.
+    Question: What are the numbers on the number line at a distance of 3 units from zero?
+    Question: What are the numbers x, for which |x| = 5?
+
+  Category: Ratios and Proportions
+    Question: 30 kilograms of rice is needed for noon-meal in a school of 200 students. In another school of 300 students, 45 kilograms of rice is needed. a) What is the ratio of the number of students? b) Is the number of students and quantity of rice are in proportion? Why?
+
+Chapter: Algebra
+  Category: Polynomials
+    Question: The longer side of a rectangle is 2 centimetres more than its shorter side. a) Taking the shorter side as x and the area of the rectangle as a(x), write the polynomial representing a(x). b) Find a(5).
+
+  Category: Absolute Value Equations
+    Question: What are the numbers x for which |x - 2| = 2. For what value of x, |x - 2| =|x- 6)?
+

@@ -26,8 +26,8 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
   const [extractedData, setExtractedData] = useState<any>()
   let projectName = "";
 
-  let startPage = 0;
-  let endPage = 0;
+  let startPage = null;
+  let endPage = null;
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -117,11 +117,16 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     projectId: string,
     docPath: string
   ) => {
+    let wholeExtract = "false"
     setExtrStatus("started");
     console.log(docUrl, projectId, docPath, startPage, endPage);
+    if(startPage == 0 && endPage == 0){
+      wholeExtract = "true"
+    }
     await fetch("http://127.0.0.1:8000/api/upload/", {
       method: "POST",
       body: JSON.stringify({
+        whole_pdf_extract:wholeExtract,
         uid: uid,
         project_id: projectId,
         doc_url: docUrl,
