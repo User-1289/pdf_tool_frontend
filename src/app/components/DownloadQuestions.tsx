@@ -23,12 +23,14 @@ export const DownloadQuestions: React.FC<{ project: any }> = ({ project }) => {
     //data += `Project ID: ${project.projectId}\n`;
     data += `Project Name: ${project.projectName}\n\n`;
 
-    projectData.chapters.forEach((chapter: any) => {
+    projectData.forEach((chapter: any) => {
       data += `Chapter: ${chapter.chapter_name}\n`;
       chapter.Categories.forEach((category: any) => {
         data += `  Category: ${category.category_name}\n`;
         category.Questions.forEach((question: any) => {
           data += `    Question: ${question.Question}\n`;
+          data+= `    Answer: ${question.answer}    \n`
+          data+= '\n'
         });
         data += '\n';
       });

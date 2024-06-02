@@ -35,7 +35,7 @@ export const DisplayEach: React.FC<{ project: any }> = ({ project }) => {
             <Image onClick={()=>{editQuestions()}} src={edit} alt="Edit" className='w-6 h-6' />
           </section>
           <section className='flex justify-between items-center w-full p-2 hover:bg-gray-300 rounded-lg cursor-pointer transition-all duration-200 ease-in-out'>
-            <span className='text-gray-800 font-semibold'>Delete</span>
+            <span className='text-gray-800 font-semibold' >Delete</span>
             <Image src={del} alt="Delete" className='w-6 h-6' />
           </section>
         </div>

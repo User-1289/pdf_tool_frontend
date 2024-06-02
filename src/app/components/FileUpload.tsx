@@ -97,7 +97,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL: string) => {
-          processCompleted()
+          getProjectName()
           console.log(downloadURL);
           setImgUrl(downloadURL);
           setBarVis(false);
@@ -117,6 +117,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     projectId: string,
     docPath: string
   ) => {
+    await getProjectName()
     let wholeExtract = "false"
     setExtrStatus("started");
     console.log(docUrl, projectId, docPath, startPage, endPage);
@@ -125,7 +126,8 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     }
     await fetch("http://127.0.0.1:8000/api/upload/", {
       method: "POST",
-      body: JSON.stringify({
+      body: JSON.stringify({  
+        project_name:projectName,
         whole_pdf_extract:wholeExtract,
         uid: uid,
         project_id: projectId,
@@ -141,7 +143,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
       //  return
         if (data.info.status == true) {
           setExtractedData(data.info.extracted_data)
-          //processCompleted();
+          //getProjectName();
           setExtrStatus("completed")
           //sessionStorage.setItem("extracted", JSON.stringify(data.info.extracted_data))
           saveProjectName(projectId, projectName,data.info.extracted_data)
@@ -160,7 +162,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     localStorage.setItem("projects", JSON.stringify(nowProj))
   }
 
-  async function processCompleted() {
+  async function getProjectName() {
     const result: SweetAlertResult = await Swal.fire({
       title: "Successfully extracted content",
       input: "text",
