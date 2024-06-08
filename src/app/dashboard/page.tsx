@@ -5,12 +5,17 @@ import { SignInButton } from '../components/SignInButton';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import FileUpload from '../components/FileUpload';
 import DisplayProjects from '../components/DisplayProjects';
+import { getLocalProjects } from '../lib/retrieveLocal';
 export default function Page() {
   const [userId, setUserId] = useState()
   const [existingProjects, setExistingProjects] = useState([])
   useEffect(()=>{
-    let getProjects = JSON.parse(localStorage.getItem("projects"))
-    setExistingProjects(getProjects)
+    let getProjects = getLocalProjects()
+    if(getProjects!=null || getProjects.length>0){
+      setExistingProjects(getProjects)
+    }
+    //let getProjects = JSON.parse(localStorage.getItem("projects"))
+    console.log(getProjects)
   }, [])
   return (
     <div>

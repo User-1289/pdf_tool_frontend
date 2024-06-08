@@ -139,7 +139,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
       //  return
         if (data.info.status == true) {
           setExtractedData(data.info.extracted_data)
@@ -150,7 +150,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
           window.location.href = `/extracted-preview?projectId=${projectId}`
         }
       });
-  };
+  }
 
   function presentationPreview(projectId: number) {
     window.location.replace(`/preview?projectId=${projectId}`);

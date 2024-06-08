@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 
 interface Files {
@@ -8,21 +6,29 @@ interface Files {
 
 interface ClientComponentProps {
   images: Files | null;
+
 }
 
 export default function ClientComponent({ images }: ClientComponentProps) {
+  
   return (
     <div>
       {images ? (
         <div>
-          <h2>Extracted Images:</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+          <h2 className="text-xl font-semibold mb-4">Extracted Images:</h2>
+          <div className="flex flex-wrap">
             {Object.entries(images).map(([filename, base64String]) => (
-              <div key={filename} style={{ margin: 10 }}>
-                <img src={base64String} alt={filename} style={{ maxWidth: '200px' }} />
-                <p>{filename}</p>
+              <div key={filename} className="m-4 flex flex-col items-center">
+                <img
+                  src={base64String}
+                  alt={filename}
+                  className="w-32 h-32 object-cover mb-2"
+                />
+                <p className="text-center">{filename}</p>
                 <a href={base64String} download={filename}>
-                  <button>Download</button>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Download
+                  </button>
                 </a>
               </div>
             ))}
