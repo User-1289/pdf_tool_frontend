@@ -8,7 +8,7 @@ import { Extroptions } from "./Extroptions";
 const { v4: uuidv4 } = require("uuid");
 import Swal, { SweetAlertResult } from "sweetalert2";
 import DisplayExtracted from "./DisplayExtracted";
-
+import { saveSingleProject } from "../lib/getUserProjects";
 interface userProps {
   uid: number;
 }
@@ -146,7 +146,9 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
           //getProjectName();
           setExtrStatus("completed")
           //sessionStorage.setItem("extracted", JSON.stringify(data.info.extracted_data))
-          saveProjectName(projectId, projectName,data.info.extracted_data)
+          let extrData = data.info.extracted_data
+          saveSingleProject({projectId, projectName, extrData})
+          //saveProjectName(projectId, projectName,data.info.extracted_data)
           window.location.href = `/extracted-preview?projectId=${projectId}`
         }
       });

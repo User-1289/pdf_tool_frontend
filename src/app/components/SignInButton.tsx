@@ -27,19 +27,15 @@ export const SignInButton = ({uid}) => {
 
   useEffect(() => {
     let getFinalState = false
-    if(session.user==null){
-      getFinalState = false
-    }
-    else if (session && session.user) {
+
+    if (session && session.user) {
         updateUserAuthState(true);
         uid(session.user.id);
         // Uncomment the next line if you want to redirect to /dashboard
         // window.location.href = "/dashboard";
         getFinalState = true
     }
-    console.log(getFinalState)
 }, [session]);
-
 
   async function syncToCloud() {
     let syncProjStat = await getProjects(session.user.id)
