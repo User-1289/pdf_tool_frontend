@@ -56,17 +56,17 @@ const DisplayText: React.FC<DisplayTextProps> = ({ categoryQuestions, updateText
 
         console.log(mergeObjects)
     }
-    useEffect(()=>{
-        //console.log(updateText)
-        if(updateText==true){
-            saveContent({projectId:projectDetails.projectId, projectName:projectDetails.projectName})
-            //console.log(categoryQuestions)
-        }
-    }, [updateText])
+    //useEffect(()=>{
+    //    //console.log(updateText)
+    //    if(updateText==true){
+    //        saveContent({projectId:projectDetails.projectId, projectName:projectDetails.projectName})
+    //        //console.log(categoryQuestions)
+    //    }
+    //}, [updateText])
     return (
         <div className="border p-4 rounded-lg shadow-lg mb-4">
             <h2 
-              onInput={(e) => { getContent.category_name = e.target.innerText; console.log(getContent.category_name) }} 
+              //onInput={(e) => { getContent.category_name = e.target.innerText; console.log(getContent.category_name) }} 
             contentEditable="true" className="text-xl font-bold mb-2 text-gray-700">{categoryQuestions.category_name}</h2>
             <details className="bg-gray-100 p-2 rounded">
                 <summary className="cursor-pointer text-gray-600">Show Questions</summary>
@@ -74,10 +74,10 @@ const DisplayText: React.FC<DisplayTextProps> = ({ categoryQuestions, updateText
                     {categoryQuestions.Questions.map((question, i) => (
                         <div key={i} className="p-2 bg-white border rounded">
                             <h3 
-                        onInput={(e) => {getContent.Questions[i].Question = e.target.innerText;}} 
+                        //onInput={(e) => {getContent.Questions[i].Question = e.target.innerText;}} 
                         contentEditable="true"  className="text-lg font-semibold text-gray-800">{question.Question}</h3>
                             {question.answer !=null && <h4
-                            onInput={(e) => {getContent.Questions[i].answer = e.target.innerText;}} 
+                         //   onInput={(e) => {getContent.Questions[i].answer = e.target.innerText;}} 
                             contentEditable="true"  className="text-gray-600">{question.answer}</h4>}
                         </div>
                     ))}
@@ -88,8 +88,8 @@ const DisplayText: React.FC<DisplayTextProps> = ({ categoryQuestions, updateText
 };
 
 
-const DisplayExtracted: React.FC<DisplayExtractedProps> = ({  }) => {
-    
+//const DisplayExtracted: React.FC<DisplayExtractedProps> = ({  }) => {
+const DisplayExtracted = () => {
     function makeIndiv(){
         let getAllProj = JSON.parse(localStorage.getItem("projects"))
         getAllProj.map((item,i)=>{
