@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import CustomShit from './CustomShit';
 import Info from '../assets/info.svg'
 export const Extroptions = ({startPageVal, endPageVal}) => {
   const [showPageOpt, setShowPageOpt] = useState(false);
