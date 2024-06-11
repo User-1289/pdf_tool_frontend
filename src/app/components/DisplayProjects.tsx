@@ -6,13 +6,17 @@ import more from '../assets/more.svg';
 import { DownloadQuestions } from '../components/DownloadQuestions';
 
 export default function DisplayProjects({ allProjects }) {
+
+
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6'>
       {allProjects == null || allProjects.length==0 ? (
         <div>No projects available</div>
       ) : (
+
         allProjects.map((project, i) => (
           <DisplayEach key={i} project={project} />
+
         ))
       )}
     </div>
@@ -49,6 +53,7 @@ export const DisplayEach: React.FC<{ project: any }> = ({ project }) => {
       <div className='flex flex-col items-center mb-1'>
         <DownloadQuestions project={project} />
       </div>
+
     </div>
   );
 };
