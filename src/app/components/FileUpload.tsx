@@ -124,7 +124,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     if(startPage == 0 && endPage == 0){
       wholeExtract = "true"
     }
-    await fetch("http://127.0.0.1:8000/api/upload/", {
+    await fetch("https://web-production-cec6.up.railway.app/api/upload/", {
       method: "POST",
       body: JSON.stringify({  
         project_name:projectName,
