@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import menuImg from '../assets/menu.svg'
 import { Providers } from './Providers'
-import { Appbar } from './Appbar'
 import { SignInButton } from './SignInButton'
 export default function Navbar() {
   const[userId, setUserId] = useState("")
