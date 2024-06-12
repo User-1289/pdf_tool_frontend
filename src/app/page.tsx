@@ -9,7 +9,6 @@ import uploadIcon from './assets/upload_file_svg.svg'
 import downloadIcon from './assets/download.svg'
 import AiLogo from './assets/ai-logo.svg'
 import { Providers } from "./components/Providers";
-import { Appbar } from "./components/Appbar";
 import { useSession } from "next-auth/react";
 import { SignInButton } from "./components/SignInButton";
 export default function Home() {
