@@ -11,11 +11,11 @@ export default function Page() {
   const [existingProjects, setExistingProjects] = useState([])
   useEffect(()=>{
     let getProjects = getLocalProjects()
+
     if(getProjects!=null || getProjects.length>0){
       setExistingProjects(getProjects)
     }
     //let getProjects = JSON.parse(localStorage.getItem("projects"))
-    console.log(getProjects)
   }, [])
   return (
     <div>
