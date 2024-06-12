@@ -146,8 +146,8 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
           //getProjectName();
           setExtrStatus("completed")
           //sessionStorage.setItem("extracted", JSON.stringify(data.info.extracted_data))
-          let extrData = data.info.extracted_data
-          saveSingleProject({projectId, projectName, extrData})
+          let projectExtracted:any = data.info.extracted_data
+          saveSingleProject({projectId, projectExtracted, projectName})
           //saveProjectName(projectId, projectName,data.info.extracted_data)
           window.location.href = `/extracted-preview?projectId=${projectId}`
         }

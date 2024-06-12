@@ -7,6 +7,12 @@ interface ProjectRes {
     error:any
 }
 
+interface ProjectDetailsStruc {
+    projectId:string,
+    projectExtracted:any[],
+    projectName:string,
+    
+}
 export async function getProjects(uid:string): Promise<ProjectRes> {
     try {
         const tasksQuery = query(collection(db, "projects"), where("uid", "==", uid));
@@ -39,7 +45,7 @@ export function saveAllProjectsLocally(projectsObj:any){
     localStorage.setItem("projects", JSON.stringify(projIdArr))
 }
 
-export function saveSingleProject(projectDetails:object){
+export function saveSingleProject(projectDetails:ProjectDetailsStruc){
     let getProjArr = JSON.parse(localStorage.getItem("projects"))
     getProjArr.push(projectDetails.projectId)
     localStorage.setItem("projects", JSON.stringify(getProjArr))
