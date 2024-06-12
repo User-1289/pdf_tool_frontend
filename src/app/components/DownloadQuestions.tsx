@@ -4,8 +4,9 @@ import React from 'react';
 export const DownloadQuestions: React.FC<{ project: any }> = ({ project }) => {
   const handleDownload = () => {
     //let parsedObj = JSON.parse(project)
-    console.log(JSON.parse(project.projectExtracted))
-    const data = formatProjectData(JSON.parse(project.projectExtracted))
+    //console.log(JSON.parse(project.projectExtracted))
+    //const data = formatProjectData(JSON.parse(project.projectExtracted))
+    const data = formatProjectData(project.projectExtracted)
     const blob = new Blob([data], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');

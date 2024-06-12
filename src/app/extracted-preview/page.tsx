@@ -106,6 +106,9 @@ const DisplayExtracted = () => {
   const [extractedText, setExtractedText] = useState([])
   const [shouldSave, setShouldSave] = useState(false)
   const [projDetails, setDetails] = useState({})
+  //const urlParams = new URLSearchParams(window.location.search);
+  //const projectIdFromParams = urlParams.get('projectId');
+
   /*useEffect(()=>{
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -138,12 +141,12 @@ const DisplayExtracted = () => {
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
             <h1 className='text-center text-xl font-bold'>Extracted Content</h1>
-            <details>
+            {/*<details>
                 <summary className='text-lg font-medium mb-3 cursor-pointer '>
                 Extracted Images
                 </summary>
-                <HomeServer />
-            </details>
+                <HomeServer uid={"107077698826747331387"} projectId={projectIdFromParams} />
+            </details>*/}
             <details open>
             <summary className='text-lg font-medium mb-3 cursor-pointer '>
                 Extracted Text

@@ -28,6 +28,7 @@ export const DisplayEach: React.FC<{ project: any }> = ({ project }) => {
 
   function editQuestions() {
     window.open("/extracted-preview?projectId=" + project.projectId, "_blank");
+    console.log(project)
   }
 
   return (

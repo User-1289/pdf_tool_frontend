@@ -18,7 +18,7 @@ export const SignInButton = ({uid}) => {
   });
   
   useEffect(() => {
-    //console.log(userLoggedInFirst);
+    console.log(userLoggedInFirst);
     if (userLoggedInFirst === "true") {
       window.location.href = "/dashboard";
       localStorage.removeItem("firstLogin"); // Corrected case for "firstLogin"
