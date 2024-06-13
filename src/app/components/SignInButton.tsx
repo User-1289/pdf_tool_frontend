@@ -12,15 +12,15 @@ export const SignInButton = ({uid}) => {
   
   const [userLoggedInFirst, setUserLoggedInFirst] = useState(() => {
     if (typeof localStorage !== 'undefined') {
-      return localStorage.getItem("firstLogin") || "";
+      return localStorage.getItem("firstLogin") || "false";
     }
     return "";
   });
   
   useEffect(() => {
-    console.log(userLoggedInFirst);
+    //console.log(userLoggedInFirst);
     if (userLoggedInFirst === "true") {
-      window.location.href = "/dashboard";
+     // window.location.href = "/dashboard";
       localStorage.removeItem("firstLogin"); // Corrected case for "firstLogin"
     } 
   }, [userLoggedInFirst]);

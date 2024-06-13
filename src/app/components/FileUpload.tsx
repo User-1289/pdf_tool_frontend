@@ -126,6 +126,9 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     }
     await fetch("https://web-production-cec6.up.railway.app/api/upload/", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({  
         project_name:projectName,
         whole_pdf_extract:wholeExtract,

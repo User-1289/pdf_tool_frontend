@@ -4,10 +4,9 @@ import edit from '../assets/edit_black.svg';
 import del from '../assets/delete.svg';
 import more from '../assets/more.svg';
 import { DownloadQuestions } from '../components/DownloadQuestions';
-
-export default function DisplayProjects({ allProjects }) {
-
-
+let globalUid = ""
+export default function DisplayProjects({ allProjects, uid }) {
+  globalUid = uid
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6'>
       {allProjects == null || allProjects.length==0 ? (
@@ -16,7 +15,6 @@ export default function DisplayProjects({ allProjects }) {
 
         allProjects.map((project, i) => (
           <DisplayEach key={i} project={project} />
-
         ))
       )}
     </div>
@@ -27,7 +25,8 @@ export const DisplayEach: React.FC<{ project: any }> = ({ project }) => {
   const [drpVis, setDrpVis] = useState(false);
 
   function editQuestions() {
-    window.open("/extracted-preview?projectId=" + project.projectId, "_blank");
+    //window.open("/extracted-preview?projectId=" + project.projectId, "_blank");
+    window.open(`/extracted-preview?id=${globalUid}&projectId=${project.projectId}`, "_blank")
     console.log(project)
   }
 

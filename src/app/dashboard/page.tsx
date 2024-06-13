@@ -28,7 +28,7 @@ export default function Page() {
         </nav>
       </header>  
       <FileUpload uid={userId}/>
-      <DisplayProjects allProjects={existingProjects}/>
+      <DisplayProjects uid={userId} allProjects={existingProjects}/>
     </div>
   );
 }

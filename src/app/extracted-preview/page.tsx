@@ -105,7 +105,7 @@ const DisplayExtracted = () => {
     //}, [])
   const [extractedText, setExtractedText] = useState([])
   const [shouldSave, setShouldSave] = useState(false)
-  const [projDetails, setDetails] = useState({})
+  const [projDetails, setDetails] = useState({uid:"", projectId:"", projectName:""})
   //const urlParams = new URLSearchParams(window.location.search);
   //const projectIdFromParams = urlParams.get('projectId');
 
@@ -131,10 +131,13 @@ const DisplayExtracted = () => {
     const projectIdFromParams = urlParams.get('projectId');
     let getProjDetails = JSON.parse(localStorage.getItem(projectIdFromParams))
     console.log(getProjDetails)
-    setDetails({projectName:getProjDetails.projectName, projectId:getProjDetails.projectId})
+    setDetails({projectName:getProjDetails.projectName, projectId:getProjDetails.projectId, uid:urlParams.get('id')})
     setExtractedText(getProjDetails.projectExtracted)
   }, [])
 
+  useEffect(()=>{
+    console.log(projDetails)
+  },[projDetails])
     //extractedText = extractedText.findIndex
   
 
@@ -145,7 +148,7 @@ const DisplayExtracted = () => {
                 <summary className='text-lg font-medium mb-3 cursor-pointer '>
                 Extracted Images
                 </summary>
-                <HomeServer uid={"107077698826747331387"} projectId={projectIdFromParams} />
+                <HomeServer uid={projDetails.uid} projectId={projDetails.projectId} />
             </details>*/}
             <details open>
             <summary className='text-lg font-medium mb-3 cursor-pointer '>
