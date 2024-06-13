@@ -149,7 +149,7 @@ const DisplayExtracted = () => {
                 Extracted Images
                 </summary>
                 <HomeServer uid={projDetails.uid} projectId={projDetails.projectId} />
-            </details>*/}
+            </details>*/  }
             <details open>
             <summary className='text-lg font-medium mb-3 cursor-pointer '>
                 Extracted Text
