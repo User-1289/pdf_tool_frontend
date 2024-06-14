@@ -41,7 +41,7 @@ export const DownloadQuestions: React.FC<{ project: any }> = ({ project }) => {
   };
 
   return (
-    <button onClick={handleDownload} className='active:bg-gray-950 bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg w-full'>
+    <button onClick={handleDownload} className='active:bg-gray-950 bg-gray-700 text-white font-semibold w-1/2 py-2 rounded-lg '>
       Download
     </button>
   );

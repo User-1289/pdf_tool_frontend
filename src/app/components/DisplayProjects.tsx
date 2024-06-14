@@ -8,7 +8,7 @@ let globalUid = ""
 export default function DisplayProjects({ allProjects, uid }) {
   globalUid = uid
   return (
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6'>
       {allProjects == null || allProjects.length==0 ? (
         <div>No projects available</div>
       ) : (

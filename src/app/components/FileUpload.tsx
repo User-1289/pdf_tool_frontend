@@ -200,7 +200,7 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
     <>
       <form onSubmit={handleFileSubmit}>
         <div
-          className="w-1/3 mx-auto h-40 border-2 shadow-lg border-dashed bg-white rounded-lg flex flex-col justify-center items-center cursor-pointer mt-5"
+          className="w-3/4 sm:w-1/2 md:1/3 lg:w-1/3 mx-auto h-40 border-2 shadow-lg border-dashed bg-white rounded-lg flex flex-col justify-center items-center cursor-pointer mt-5 text-center"
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}

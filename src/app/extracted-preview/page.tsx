@@ -1,5 +1,5 @@
 'use client'
-import HomeServer from "../view-files/page"
+import DisplayImages from "../view-files/page"
 import React, { use, useEffect, useState } from 'react';
 import downloadIcon from '../assets/download.svg'
 import Image from "next/image";
@@ -130,26 +130,25 @@ const DisplayExtracted = () => {
     const urlParams = new URLSearchParams(queryString);
     const projectIdFromParams = urlParams.get('projectId');
     let getProjDetails = JSON.parse(localStorage.getItem(projectIdFromParams))
-    console.log(getProjDetails)
+    //console.log(urlParams.get('id'))
     setDetails({projectName:getProjDetails.projectName, projectId:getProjDetails.projectId, uid:urlParams.get('id')})
     setExtractedText(getProjDetails.projectExtracted)
   }, [])
 
-  useEffect(()=>{
-    console.log(projDetails)
-  },[projDetails])
+
     //extractedText = extractedText.findIndex
   
 
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
             <h1 className='text-center text-xl font-bold'>Extracted Content</h1>
-            {/*<details>
+            { projDetails.uid !=null && projDetails.uid.length > 0 && 
+            <details>
                 <summary className='text-lg font-medium mb-3 cursor-pointer '>
                 Extracted Images
                 </summary>
-                <HomeServer uid={projDetails.uid} projectId={projDetails.projectId} />
-            </details>*/  }
+                <DisplayImages uid={projDetails.uid} projectId={projDetails.projectId} />
+            </details>  }
             <details open>
             <summary className='text-lg font-medium mb-3 cursor-pointer '>
                 Extracted Text

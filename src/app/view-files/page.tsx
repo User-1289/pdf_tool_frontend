@@ -50,16 +50,17 @@ function ClientComponent({ images, onDownloadZip }: ClientComponentProps) {
   );
 }
 
-const HomeClient = ({}) => {
+const HomeClient = ({uid, projectId}) => {
   const [images, setImages] = useState<Files | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchAndExtractImages = async () => {
+      console.log(uid, projectId)
       try {
-        //const fileRef = ref(storage, `gs://pdf-tool-dde90.appspot.com/${uid}/${projectId}/images.zip`);
-        const fileRef = ref(storage, 'gs://pdf-tool-dde90.appspot.com/107077698826747331387/5474ec79-d651-4e1a-8128-6b6c81a1e576/images.zip');
+        const fileRef = ref(storage, `gs://pdf-tool-dde90.appspot.com/${uid}/${projectId}/images.zip`);
+        //const fileRef = ref(storage, 'gs://pdf-tool-dde90.appspot.com/107077698826747331387/5474ec79-d651-4e1a-8128-6b6c81a1e576/images.zip');
         const downloadURL = await getDownloadURL(fileRef);
         const response = await fetch(downloadURL);
 

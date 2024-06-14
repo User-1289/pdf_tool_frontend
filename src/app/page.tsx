@@ -12,8 +12,6 @@ import { Providers } from "./components/Providers";
 import { useSession } from "next-auth/react";
 import { SignInButton } from "./components/SignInButton";
 export default function Home() {
-
-
   return (
   <>
   <Navbar />
@@ -63,7 +61,7 @@ export default function Home() {
   </section>
   
   <h2 className="text-center font-medium text-2xl mb-4">Impact on Educating Instructors</h2>
-  <section id="key-features-section" className="p-5 mb-8 rounded-lg bg-gradient-to-r shadow-2xl from-green-100 via-blue-100 to-white w-2/3 mx-auto">
+  <section id="key-features-section" className="p-5 mb-8 rounded-lg bg-gradient-to-r shadow-2xl from-green-100 via-blue-100 to-white sm:w-2/3 mx-auto">
   <p className="text-gray-600 leading-relaxed">
   This product revolutionizes educator efficiency by automating the process of curating high-quality exercise questions.
   By seamlessly extracting questions from previous question papers and intelligently selecting top-tier queries, it empowers instructors to focus more on personalized teaching and student engagement.
