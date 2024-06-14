@@ -15,7 +15,7 @@ export const Extroptions = ({startPageVal, endPageVal}) => {
     endPageVal(Number(endPageNum));
   }, [endPageNum])
   return (
-    <div className='mx-auto flex flex-col justify-start items-start border-2 w-1/3 p-2'>
+    <div className='mx-auto flex flex-col justify-start items-start border-2 w-3/4 sm:w-1/3 p-2'>
       <h3>Where do you want to extract questions from</h3>
       <div className='flex items-center justify-end p-3'>
         <label>
