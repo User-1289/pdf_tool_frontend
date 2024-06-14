@@ -54,7 +54,7 @@ function ClientComponent({ images, onDownloadZip }: ClientComponentProps) {
   );
 }
 
-const HomeClient = ({ uid, projectId }: { uid: string; projectId: string }) => {
+const HomeClient: React.FC<DisplayImageProps> = ({ uid, projectId }) => {
   const [images, setImages] = useState<Files | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
