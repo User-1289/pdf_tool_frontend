@@ -1,9 +1,9 @@
 'use client'
-import DisplayImages from "../view-files/page"
 import React, { use, useEffect, useState } from 'react';
 import downloadIcon from '../assets/download.svg'
 import Image from "next/image";
 import expandIcon from '../assets/expand.svg'
+import GetImages from "../components/RetrieveImages";
 interface Question {
     Question: string;
     answer: string;
@@ -147,7 +147,7 @@ const DisplayExtracted = () => {
                 <summary className='text-lg font-medium mb-3 cursor-pointer '>
                 Extracted Images
                 </summary>
-                <DisplayImages uid={projDetails.uid} projectId={projDetails.projectId} />
+                <GetImages uid={projDetails.uid} projectId={projDetails.projectId} />
             </details>  }
             <details open>
             <summary className='text-lg font-medium mb-3 cursor-pointer '>
