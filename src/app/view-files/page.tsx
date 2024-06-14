@@ -10,6 +10,10 @@ interface Files {
   [key: string]: string;
 }
 
+interface DisplayImageProps {
+  uid: string;
+  projectId: string;
+}
 interface ClientComponentProps {
   images: Files | null;
   onDownloadZip: () => void; // Function to handle zip download
@@ -50,7 +54,7 @@ function ClientComponent({ images, onDownloadZip }: ClientComponentProps) {
   );
 }
 
-const HomeClient = ({uid, projectId}) => {
+const HomeClient = ({ uid, projectId }: DisplayImageProps) => {
   const [images, setImages] = useState<Files | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
