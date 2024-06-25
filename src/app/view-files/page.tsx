@@ -5,7 +5,8 @@ import JSZip from 'jszip';
 import { storage } from '../components/configure';
 import { ref, getDownloadURL } from 'firebase/storage';
 import Image from 'next/image';
-import downloadIcon from '../assets/download.svg'
+import downloadIcon from '../assets/download.svg';
+
 interface Files {
   [key: string]: string;
 }
@@ -14,9 +15,10 @@ interface DisplayImageProps {
   uid: string;
   projectId: string;
 }
+
 interface ClientComponentProps {
   images: Files | null;
-  onDownloadZip: () => void; // Function to handle zip download
+  onDownloadZip: () => void;
 }
 
 function ClientComponent({ images, onDownloadZip }: ClientComponentProps) {
@@ -24,10 +26,14 @@ function ClientComponent({ images, onDownloadZip }: ClientComponentProps) {
     <div>
       {images ? (
         <div>
-<div className='flex justify-center items-center h-full'>
-  <button onClick={onDownloadZip} className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">Download All as ZIP</button>
-</div>
-
+          <div className='flex justify-center items-center h-full'>
+            <button
+              onClick={onDownloadZip}
+              className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
+            >
+              Download All as ZIP
+            </button>
+          </div>
           <div className="flex flex-wrap">
             {Object.entries(images).map(([filename, base64String]) => (
               <div key={filename} className="m-4 flex flex-col items-center">
@@ -36,12 +42,8 @@ function ClientComponent({ images, onDownloadZip }: ClientComponentProps) {
                   alt={filename}
                   className="w-32 h-32 object-cover mb-2"
                 />
-                {/*<p className="text-center">{filename}</p>*/}
                 <a href={base64String} download={filename}>
-                <Image src={downloadIcon} alt='download'/>
-                  {/*<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Download
-                  </button>*/}
+                  <Image src={downloadIcon} alt='download' />
                 </a>
               </div>
             ))}
@@ -61,10 +63,9 @@ const HomeClient: React.FC<DisplayImageProps> = ({ uid, projectId }) => {
 
   useEffect(() => {
     const fetchAndExtractImages = async () => {
-      console.log(uid, projectId)
+      console.log(uid, projectId);
       try {
         const fileRef = ref(storage, `gs://pdf-tool-dde90.appspot.com/${uid}/${projectId}/images.zip`);
-        //const fileRef = ref(storage, 'gs://pdf-tool-dde90.appspot.com/107077698826747331387/5474ec79-d651-4e1a-8128-6b6c81a1e576/images.zip');
         const downloadURL = await getDownloadURL(fileRef);
         const response = await fetch(downloadURL);
 
@@ -94,7 +95,7 @@ const HomeClient: React.FC<DisplayImageProps> = ({ uid, projectId }) => {
     };
 
     fetchAndExtractImages();
-  }, []);
+  }, [uid, projectId]);
 
   const handleDownloadZip = async () => {
     try {
@@ -130,7 +131,7 @@ const HomeClient: React.FC<DisplayImageProps> = ({ uid, projectId }) => {
 
   return (
     <div>
-     <ClientComponent images={images} onDownloadZip={handleDownloadZip} />
+      <ClientComponent images={images} onDownloadZip={handleDownloadZip} />
     </div>
   );
 };
