@@ -45,9 +45,16 @@ export function saveAllProjectsLocally(projectsObj:any){
     localStorage.setItem("projects", JSON.stringify(projIdArr))
 }
 
-export function saveSingleProject(projectDetails:ProjectDetailsStruc){
-    let getProjArr = JSON.parse(localStorage.getItem("projects"))
-    getProjArr.push(projectDetails.projectId)
-    localStorage.setItem("projects", JSON.stringify(getProjArr))
-    localStorage.setItem(projectDetails.projectId, JSON.stringify(projectDetails))
+export function saveSingleProject(projectDetails) {
+    return new Promise((resolve, reject) => {
+        try {
+            let getProjArr = JSON.parse(localStorage.getItem("projects")) || [];
+            getProjArr.push(projectDetails.projectId);
+            localStorage.setItem("projects", JSON.stringify(getProjArr));
+            localStorage.setItem(projectDetails.projectId, JSON.stringify(projectDetails));
+            resolve('finished');
+        } catch (error) {
+            reject(error);
+        }
+    });
 }

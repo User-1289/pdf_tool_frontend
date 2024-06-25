@@ -150,9 +150,18 @@ const FileUpload: React.FC<userProps> = ({ uid }) => {
           setExtrStatus("completed")
           //sessionStorage.setItem("extracted", JSON.stringify(data.info.extracted_data))
           let projectExtracted:any = data.info.extracted_data
-          saveSingleProject({projectId, projectExtracted, projectName})
+          let saveStat = saveSingleProject({projectId, projectExtracted, projectName})
+          .then((stat)=>{
+            console.log(stat)
+            if(stat=='finished'){
+              window.location.href = `/extracted-preview?id=${uid}&projectId=${projectId}`
+            }
+          })
           //saveProjectName(projectId, projectName,data.info.extracted_data)
-          window.location.href = `/extracted-preview?projectId=${projectId}`
+          //console.log(saveStat)
+          //if(saveStat=='finished'){
+          //  window.location.href = `/extracted-preview?id=${uid}&projectId=${projectId}`
+          //}
         }
       });
   }
